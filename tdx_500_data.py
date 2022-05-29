@@ -1,16 +1,22 @@
 #处理从通达信中导出来的行情数据，整理完写入csv
 import csv
 from operator import truediv
+from timeit import repeat
 data=[]
-with open('D:\\new_tdx\\T0002\\export\\510500.csv',mode='r') as f:
+with open('510500.csv',mode='r') as f:
     reader=csv.reader(f)
-   
+    i=0
     for row in reader:
+        #标题栏跳过
+        if i==0:           
+            i+=1
+            continue
         if len(row)>0:
             newRow=row[0].replace('\t','').replace('   ',' ').lstrip()
-            newList=newRow.split(' ')
-            data.append([newList[0],newList[1],newList[2],newList[3],newList[4],'buy'])
-            
+            newList=newRow.split()
+            if(len(newList)==0):
+                continue
+            data.append([newList[0],newList[1],newList[2],newList[3],newList[4]])
         else:
             continue
 

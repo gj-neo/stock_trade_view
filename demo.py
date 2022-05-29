@@ -1,3 +1,4 @@
+#绘制K线买卖信号html,日期范围 [2018-12-7,...,2022-4-11]
 from re import X
 import pyecharts.options as opts
 from pyecharts.charts import Kline,Line,Grid,EffectScatter
@@ -32,11 +33,11 @@ for line in f:
 #创建K线图表    
 kline=Kline()
 kline.add_xaxis(x_data)
-kline.add_yaxis('aa',y_data)
+kline.add_yaxis('K线价格',y_data)
 kline.set_global_opts(
         yaxis_opts=opts.AxisOpts(is_scale=True),
         xaxis_opts=opts.AxisOpts(is_scale=True),
-        title_opts=opts.TitleOpts(title="Kline-基本示例"),
+        title_opts=opts.TitleOpts(title="stock_trade_view"),
         #在图标内容区域拉伸
         datazoom_opts=[opts.DataZoomOpts(type_="inside")],
         #在图标下方拉伸

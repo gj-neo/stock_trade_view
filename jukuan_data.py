@@ -1,5 +1,6 @@
+#处理聚宽回测出来的交易日志数据，写入另一个jukuan_500_trade_data.txt
 import numpy as np
-f=open('jukuan_data.txt',encoding='utf-8')
+f=open('jukuan_data_original.txt',encoding='utf-8')
 txt=[]
 for line in f:
     newline=line.replace('\n','').strip().replace('买','buy').replace("卖",'sell')
